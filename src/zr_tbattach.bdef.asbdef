@@ -1,0 +1,54 @@
+managed implementation in class ZBP_R_TBATTACH unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_TBATTACH alias ZrTbattach
+persistent table ZTB_ATTACH
+extensible
+draft table ZTBATTACH_D
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master( global )
+{
+  field ( mandatory : create )
+   Materialid;
+
+  field ( readonly )
+   Createdby,
+   Createdat,
+   Lastchangedby,
+   Lastchangedat,
+   Locallastchangedat;
+
+  field ( readonly : update )
+   Materialid;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZTB_ATTACH corresponding extensible
+  {
+    Materialid = MATERIALID;
+    Description = DESCRIPTION;
+    Origin = ORIGIN;
+    Status = STATUS;
+    Createdby = CREATEDBY;
+    Username = USERNAME;
+    Attachement = ATTACHEMENT;
+    Filename = FILENAME;
+    Mimetype = MIMETYPE;
+    Createdat = CREATEDAT;
+    Lastchangedby = LASTCHANGEDBY;
+    Lastchangedat = LASTCHANGEDAT;
+    Locallastchangedat = LOCALLASTCHANGEDAT;
+  }
+
+}

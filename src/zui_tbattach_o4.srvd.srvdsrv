@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_TBATTACH'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_TBATTACH'
+  }
+}
+define service ZUI_TBATTACH_O4 provider contracts odata_v4_ui {
+  expose ZC_TBATTACH;
+}
